@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import history
 
 urlpatterns = [
   
@@ -19,4 +20,5 @@ urlpatterns = [
   
   # Delete the task, button feature
   path('delete_task/ <int:pk>/', views.delete_task, name='delete_task'),
+  
 ]

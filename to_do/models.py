@@ -16,4 +16,7 @@ class Task(models.Model):
   def __str__(self):
     return self.task
   
-
+class TaskHistory(models.Model):
+  task = models.CharField(max_length=255)
+  is_completed = models.BooleanField(default=False)
+  date = models.DateField()

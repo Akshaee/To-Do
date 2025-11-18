@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from to_do.views import history
 
 
 urlpatterns = [
@@ -25,4 +26,7 @@ urlpatterns = [
     
     # To Do
     path('todo/', include('to_do.urls')),
+    
+    #For the history
+    path('history/', history, name='history')
 ]

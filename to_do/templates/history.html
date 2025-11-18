@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do | History</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="bg-light">
+  <a href="{% url 'home' %}" class="btn btn-primary">
+    <i class="fab fa-amazon">Back to Home</i>
+  </a>
+<div class="container py-4">
+
+  <h2 class="text-center mb-4">Task History</h2>
+
+  {% for title, items in sections %}
+  
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        <h5 class="m-0">{{ title }}</h5>
+      </div>
+
+      <div class="card-body">
+        {% if items %}
+          <ul class="list-group">
+            {% for task in items %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ task.task }}
+
+                {% if task.is_completed %}
+                  <span class="badge bg-success">Completed</span>
+                {% else %}
+                  <span class="badge bg-warning text-dark">Not Completed</span>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted">No tasks found.</p>
+        {% endif %}
+      </div>
+    </div>
+
+  {% endfor %}
+
+</div>
+
+
+</body>
+</html>
